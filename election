@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.HashMap; 
+
+/**
+ *
+ * @author Kacper
+ */
+public class Main {
+    public static void main(String[] args){
+        Scanner elect = new Scanner(System.in);
+        HashMap<String, Integer> map= new HashMap<>();
+        System.out.println("Enter the candidate names; press 0 to stop"); 
+        String winner; 
+        int counter = 0;        
+        for(int n =0; n<=10;n++){
+
+             String name = elect.nextLine();
+             if(name.equals("0")){
+                 break;
+             }
+          if (!map.containsKey(name)) {
+             map.put(name, 1);
+             }     
+          else {
+             map.put(name, map.get(name)+1);
+              
+      }
+    for(String i: map.keySet()){
+      if(counter < map.get(i)){
+        counter = map.get(i);
+      }
+
+    }  
+    }
+    System.out.println(map);
+    System.out.println(counter);
+    }
+}
