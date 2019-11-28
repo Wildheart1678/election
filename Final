@@ -1,0 +1,58 @@
+import java.util.Collections;
+import java.util.Scanner;
+import java.util.HashMap; 
+import java.util.Map.Entry;
+
+/**
+ * Student ID: 21431063 || 21406951
+ * @author Kacper and Berfin :)
+ * Program designed to take in votes for a candidate and using a hashmap, outputs the winner.
+ */
+public class Main {
+    public static void main(String[] args){
+        Scanner elect = new Scanner(System.in);
+        HashMap<String, Integer> map= new HashMap<>();
+        /*hashmap is a map based collection class, of used to decare chervon 
+         used to set the data types of a key and the value.
+        chose hashmaps because it was easier to count multiple values at once.*/
+        System.out.println("############################################");
+        System.out.println("#Enter the candidate names; press 0 to stop#"); 
+        System.out.println("############################################");
+        //Introduction to the voting system. Can keep voting until voters press 0 
+               
+        while(true){
+            /*the while loop is used so that the user can input as many entries as needed
+            until the break is forced*/
+
+             String name = elect.nextLine();
+             //entry for the names.
+             if(name.equals("0")){
+                 break;
+                 //break statment that breaks the while loop, if the break is entered
+             }
+             /*In this if statement, firstly the code checks to see if there is a key corresponding to the entry by the user
+             if not the code adds this as another key and value to the map. Otherwise it finds the key and increases its value
+             by one.*/
+          if (!map.containsKey(name)) {
+             map.put(name, 1);
+             
+             }     
+          else {
+             map.put(name, map.get(name)+1);
+              
+      }
+    }
+        for(String n : map.keySet()){
+            System.out.println(n + " got " + map.get(n) + " votes.");
+        }
+        System.out.println("The winner of the election is:");
+      /*the collection was used as a means of grouping all the values of a map together where as the max finds the
+      highest value in said group and throught this an interger is set as count winner*/  
+    int countwinner =(Collections.max(map.values())); 
+    //the for loop just cycles through the map
+    for(Entry<String, Integer> entry: map.entrySet()){
+        //the if statment checks the value of the key and if it corresponds to the largest it prints the key.
+      if(entry.getValue()==countwinner){
+           System.out.println(entry.getKey());
+    //System.out.println(map);
+    }}}}
